@@ -20,16 +20,8 @@ int main()
         }
         else if(v[mid]==1)
         {
-            mid++;
+            
         }
-        else{
-            swap(v[mid], v[high]);
-            high--;
-        }
-    }
-    for(int i=0;i<v.size();i++)
-    {
-        cout<<v[i]<<" ";
     }
     return 0;
 }

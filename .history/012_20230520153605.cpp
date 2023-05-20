@@ -22,14 +22,10 @@ int main()
         {
             mid++;
         }
-        else{
-            swap(v[mid], v[high]);
+        else if(v[mid==2])
+        {
+            swap(v[mid],v[high]);
             high--;
-        }
-    }
-    for(int i=0;i<v.size();i++)
-    {
-        cout<<v[i]<<" ";
     }
     return 0;
 }

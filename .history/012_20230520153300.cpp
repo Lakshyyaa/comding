@@ -12,24 +12,12 @@ int main()
     int high=v.size()-1;
     for(int i=0;i<v.size();i++)
     {
-        if(v[mid]==0)
+        if(a[mid]==0)
         {
-            swap(v[mid],v[low]);
+            swap(v[mid],a[low]);
             mid++;
             low++;
         }
-        else if(v[mid]==1)
-        {
-            mid++;
-        }
-        else{
-            swap(v[mid], v[high]);
-            high--;
-        }
-    }
-    for(int i=0;i<v.size();i++)
-    {
-        cout<<v[i]<<" ";
     }
     return 0;
 }

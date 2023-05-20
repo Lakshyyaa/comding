@@ -23,13 +23,10 @@ int main()
             mid++;
         }
         else{
-            swap(v[mid], v[high]);
-            high--;
+            
         }
-    }
-    for(int i=0;i<v.size();i++)
-    {
-        cout<<v[i]<<" ";
+            swap(v[mid],v[high]);
+            high--;
     }
     return 0;
 }
