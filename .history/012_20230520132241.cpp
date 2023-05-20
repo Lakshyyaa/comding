@@ -2,15 +2,14 @@
 #include <vector>
 #include <limits.h>
 using namespace std;
-
-int partition(vector<int> &v, int low, int high)
+int partition(vector<int> &v, int high, int low)
 {
-    int pivot = v[low];
-    int i = low;
-    int j = high;
-    while (i < j)
+    int pivot=v[low];
+    int i=low;
+    int j=high;
+    while (i<j)
     {
-        while (v[i] <= pivot && i < high)
+        while(v[i]<=pivot &&  i<high)
         {
             i++;
         }
@@ -18,15 +17,15 @@ int partition(vector<int> &v, int low, int high)
         {
             j--;
         }
-        if (i < j)
+        if(i<j)
         {
-            swap(v[i], v[j]);
+            swap(v[i],v[j]);
         }
     }
     swap(v[low], v[j]);
     return j;
 }
-void quicksort(vector<int> &v, int low, int high)
+int quicksort(vector<int> &v, int low, int high)
 {
     if (low < high)
     {
@@ -38,10 +37,12 @@ void quicksort(vector<int> &v, int low, int high)
 int main()
 {
     vector<int> v = {1, 2, 0, 2, 2, 1, 0, 1, 2, 2, 0, 0, 1, 0};
+    int low = 0;
+    int high = v.size() - 1;
     quicksort(v, 0, v.size() - 1);
-    for (int i = 0; i < v.size(); i++)
+    for(int i=0;i<v.size();i++)
     {
-        cout << v[i] << " ";
+        cout<<v[i]<<" ";
     }
     return 0;
 }
