@@ -1,3 +1,5 @@
+#include <iostream>
+#include <vector>
 #include <algorithm>
 #include <limits.h>
 using namespace std;
@@ -16,3 +18,24 @@ int main()
     int index2=nums.size()-1;
     for (int i = nums.size() - 1; i > 0; i--){
         if(nums[i-1]<nums[i]){
+            index1=i-1;
+            break;
+        }
+    }
+    for (int i = nums.size() - 1; i >= 0; i--)
+    {
+        if (nums[i] > nums[index1])
+        {
+            index2 = i;
+            break;
+        }
+    }
+    cout<<index<<" "<<index2<<endl;
+    swap(nums[index1],nums[index2]);
+
+    // reverse(nums.begin()+index1+1, nums.end());
+    for(int i=0;i<nums.size();i++){
+        cout<<nums[i]<<" ";
+    }
+    return 0;
+}
