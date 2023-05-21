@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <limits.h>
+#include <algorithm>
+using namespace std;
+int main(){
+    
+    map<int, int> m;
+    for (int i = 0; i < nums1.size(); i++)
+    {
+        map[i] = 0;
+    }
+    for (int i = 0; i < nums1.size(); i++)
+    {
+        if (map[i] == 0)
+        {
+            map[i]++;
+        }
+    }
+    for (int i = 0; i < nums2.size(); i++)
+    {
+        if (map[i] == 1)
+        {
+            map[i]++;
+        }
+    }
+    return 0;
+}
