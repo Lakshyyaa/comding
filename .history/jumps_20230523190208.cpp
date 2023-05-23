@@ -72,6 +72,5 @@ int main()
         jumps++;
     }
     return 0;
-
+    
 }
-// O(n) approach needs to be studied.

@@ -39,16 +39,13 @@ using namespace std;
 //     }
 // }
 
-// another O(n^2) approach:
-// start from i=0 and for each element check if it takes you the farthest go to that element and repeat
-// have to check all possible combinations for each element we jump to
+// O(n) approach:
 int main()
 {
-    vector<int> nums = {2,3,1,1,4};
+    vector<int> nums = {9};
     int i = 0;
     int jumps = 0;
-    if(nums.size()==1){
-        cout<<0;
+    if(nums.size()){
         return 0;
     }
     while (1)
@@ -72,6 +69,4 @@ int main()
         jumps++;
     }
     return 0;
-
 }
-// O(n) approach needs to be studied.

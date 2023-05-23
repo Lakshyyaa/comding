@@ -74,4 +74,4 @@ int main()
     return 0;
 
 }
-// O(n) approach needs to be studied.
+// O(n) approach needs to be 

@@ -44,7 +44,7 @@ using namespace std;
 // have to check all possible combinations for each element we jump to
 int main()
 {
-    vector<int> nums = {2,3,1,1,4};
+    vector<int> nums = {2,3,0,1,4};
     int i = 0;
     int jumps = 0;
     if(nums.size()==1){
@@ -72,6 +72,4 @@ int main()
         jumps++;
     }
     return 0;
-
 }
-// O(n) approach needs to be studied.
