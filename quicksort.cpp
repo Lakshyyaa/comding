@@ -22,21 +22,20 @@ int partition(vector<int> &v, int low, int high)
             swap(v[i], v[j]);
         }
     }
-    swap(v[low], v[j]);
+    swap(v[low],v[j]);
     return j;
 }
 void quicksort(vector<int> &v, int low, int high)
 {
-    if (low < high)
-    {
+    if(low<high){
         int part = partition(v, low, high);
         quicksort(v, low, part - 1);
         quicksort(v, part + 1, high);
-    }
+    } 
 }
 int main()
 {
-    vector<int> v = {1, 2, 0, 2, 2, 1, 0, 1, 2, 2, 0, 0, 1, 0};
+    vector<int> v = {7,9,9,7,5,3,1,3,5,8,0,9,7,5,3,32,1,4};
     quicksort(v, 0, v.size() - 1);
     for (int i = 0; i < v.size(); i++)
     {
