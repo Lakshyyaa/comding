@@ -6,7 +6,7 @@
 using namespace std;
 // IF ALL POSITIVE:
 // Brute: check all elements if they form the subarray(+,0,-) O(n*n) time O(1) space
-// Better: use a hashmap to store prefix sum of all O(n) and O(n)
+// Better: use a hashmap to store prefix sum of all with their count O(n) and O(n)
 // Optimal: two pointers to store first and last element
 int brute(vector<int> v, int sum)
 {

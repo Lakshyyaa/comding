@@ -6,27 +6,24 @@
 using namespace std;
 // IF ALL POSITIVE:
 // Brute: check all elements if they form the subarray
-// Better: use a hashmap to store prefix sum of all
+// Better: use a hashmap to store prefix sum of all with their index
 // Optimal: two pointers to store first and last element
 int brute(vector<int> v, int sum)
 {
-    int max = 0;
+    int x = 0;
     for (int i = 0; i < v.size(); i++)
-    {   
+    {
         int sumx = 0;
         for (int j = i; j < v.size(); j++)
         {
             sumx += v[j];
             if (sumx == sum)
             {
-                if (max < j - i + 1)
-                {
-                    max = j - i + 1;
-                }
+                x = max(x, j - i + 1);
             }
         }
     }
-    return max;
+    return x;
 }
 // hashmap stores the prefix sum for element at i
 // using this, let's say for map[i]=x and for j<i map[j]=x-k
@@ -36,7 +33,7 @@ int brute(vector<int> v, int sum)
 // so only update hashmap if empty by adding the line extra.
 int better(vector<int> v, int sum)
 {
-    int max = 0;
+    int x = 0;
     unordered_map<int, int> m;
     int sumx = 0;
     for (int i = 0; i < v.size(); i++)
@@ -44,15 +41,12 @@ int better(vector<int> v, int sum)
         sumx += v[i];
         if (sumx == sum)
         {
-            max = i + 1;
-            }
+            x = i;
+        }
         if (m.find(sumx - sum) != m.end())
         {
             int j = m[sumx - sum];
-            if (max < i - j)
-            {
-                max = i - j;
-            }
+            x = max(x, i - j);
         }
         // updating by checking
         if (m.find(sumx) == m.end())
@@ -61,46 +55,53 @@ int better(vector<int> v, int sum)
         }
         //
     }
-    return max;
+    return x;
 }
+// We already know this cant count properly if 0, -ve present
 int optimal(vector<int> v, int sum)
 {
-    int max = 0;
-    int i = 0;
-    int j = 0;
+    int i = -1;
+    int j = -1;
     int sumx = 0;
-    while (i < v.size() + 1)
+    int x = 0;
+    while (i + 1 < v.size() + 1)
     {
         if (sumx < sum)
         {
-            if (i < v.size())
-            {
-                sumx += v[i];
-                i++;
-            }
+            i++;
+            sumx += v[i];
         }
         else if (sumx > sum)
         {
-            sumx -= v[j];
             j++;
+            sumx -= v[j];
         }
         else
         {
-            if (max < i - j)
-            {
-                max = i - j;
-            }
-            sumx += v[i];
+            x = max(x, i - j);
             i++;
+            if (i < v.size())
+            {
+                sumx += v[i];
+            }
         }
     }
-    return max;
+    while (j < v.size())
+    {
+        j++;
+        sumx -= v[j];
+        if (sumx == sum)
+        {
+            x = max(x, i - j);
+        }
+    }
+    return x;
 }
 int main()
 {
-    vector<int> v = {1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, -2, 0, 1, 1, -1, -1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3};
+    vector<int> v = {1, 2, 3, -2, -3, 0, 0, 3, 1, 2, -3};
     int sum = 3;
-    // cout << brute(v, sum) << endl;
+    cout << brute(v, sum) << endl;
     cout << better(v, sum) << endl;
     cout << optimal(v, sum);
     return 0;
